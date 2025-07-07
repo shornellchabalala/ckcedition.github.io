@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CKC Edition - Source of Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2d8f47;
+            --primary-dark: #1a5a2e;
+            --primary-light: #00ff88;
+            --accent: #39ff14;
+            --dark: #0a0a0a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --border: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-main {
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary-dark);
+            letter-spacing: 1px;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: var(--primary);
+            margin-top: 3px;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 5px 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .contact-info {
+            text-align: right;
+        }
+
+        .contact-info a {
+            display: block;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                        url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1415&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .slogan {
+            font-size: 2.2rem;
+            color: var(--primary-light);
+            margin-bottom: 30px;
+            font-weight: 400;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            text-shadow: 0 0 15px rgba(0,0,0,0.7);
+            line-height: 1.3;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+            font-size: 1.1rem;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--primary);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .service-card:hover .service-image img {
+            transform: scale(1.05);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+
+        .service-content p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .combo-offer {
+            background-color: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 3px solid var(--primary);
+        }
+
+        .combo-offer h4 {
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .combo-offer h4 i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: #f8f9fa;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .about-text h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            padding-right: 20px;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-info h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-details div {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .contact-details i {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-right: 15px;
+            width: 30px;
+            margin-top: 5px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-form h3 {
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-form h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo .logo-text {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .footer-logo .tagline {
+            color: var(--primary-light);
+        }
+
+        .footer-logo p {
+            color: #bbb;
+            margin-top: 15px;
+            line-height: 1.8;
+        }
+
+        .footer-links h4 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Popup Styles */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .popup-content i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .popup-content h3 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .popup-content p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #777;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-popup:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .slogan {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            nav ul li {
+                margin: 10px;
+            }
+
+            .contact-info {
+                text-align: center;
+                margin-top: 15px;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .slogan {
+                font-size: 1.4rem;
+            }
+
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Header -->
+<header>
+    <div class="header-main">
+        <div class="container">
+            <div class="header-container">
+                <div class="logo">
+                    <div>
+                        <div class="logo-text">CKC <span>EDITION</span></div>
+                        <div class="tagline">SOURCE OF SOLUTIONS</div>
+                    </div>
+                </div>
+
+                <nav>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+
+
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="container">
+        <h1>Professional IT Solutions</h1>
+        <p class="slogan">Solving Complex Needs with Simple Solutions Empowering You Through Innovation & Support</p>
+        <div class="btn-container">
+            <a href="#services" class="btn">Explore Our Services</a>
+            <a href="#contact" class="btn btn-outline">Get Expert Assistance</a>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Comprehensive IT solutions tailored to meet your business and personal needs</p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Software Services -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://break2fix.com/wp-content/uploads/2016/12/Install-software-1.jpg" alt="Software Installation">
+                </div>
+                <div class="service-content">
+                    <h3>Software Installation</h3>
+                    <p>Professional installation of all essential software including operating systems, productivity suites, and specialized applications.</p>
+                    <div class="price">From R150</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://us1.discourse-cdn.com/spiceworks/original/4X/f/6/a/f6a49bc6e543a4e98ad98e42e2f572f22e206903.jpeg" alt="Windows Installation">
+                </div>
+                <div class="service-content">
+                    <h3>Windows Installation</h3>
+                    <p>Clean installation of Windows operating system with all necessary drivers and updates.</p>
+                    <div class="price">R200</div>
+                    <div class="combo-offer">
+                        <h4><i class="fas fa-star"></i> Special Combo Offer</h4>
+                        <p>Windows + Microsoft Office installation for only <strong>R200</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://img.grouponcdn.com/deal/23b4EXRfT9kbUX9SVuKk5Ezz8U4Q/23-870x524/v1/t2100x1260.webp" alt="Microsoft Office">
+                </div>
+                <div class="service-content">
+                    <h3>Microsoft Office Installation And Activation</h3>
+                    <p>Installation and configuration of Microsoft Office suite including Word, Excel, PowerPoint and Outlook.</p>
+                    <div class="price">R150</div>
+                </div>
+            </div>
+
+            <!-- Hardware Services -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://images.idgesg.net/images/article/2018/02/acer_aspire_e15_ram_at_angle-100751036-orig.jpg" alt="RAM Installation">
+                </div>
+                <div class="service-content">
+                    <h3>RAM Installation</h3>
+                    <p>Professional RAM upgrade to boost your computer's performance and speed.</p>
+                    <div class="price">From R250</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://substackcdn.com/image/fetch/w_1200,h_600,c_fill,f_jpg,q_auto:good,fl_progressive:steep,g_auto/https://substack-post-media.s3.amazonaws.com/public/images/b7b4a55a-6d39-4385-a940-81f09f5ad44a_5824x3264.jpeg" alt="PC Diagnostics">
+                </div>
+                <div class="service-content">
+                    <h3>PC Diagnostics</h3>
+                    <p>Comprehensive computer diagnostics to identify hardware and software issues.</p>
+                    <div class="price">R150</div>
+                </div>
+            </div>
+
+            <!-- Other Services -->
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://iconicinstitutes.com/wp-content/uploads/2023/03/White-Modern-Explore-Instagram-Story-4.jpg" alt="Graphic Design">
+                </div>
+                <div class="service-content">
+                    <h3>Graphic Design</h3>
+                    <p>Professional graphic design services for logos, marketing materials, and digital content.</p>
+                    <div class="price">From R300</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/advisor/wp-content/uploads/2023/09/network_management_-_article_image.jpg" alt="Network Management">
+                </div>
+                <div class="service-content">
+                    <h3>Network Management</h3>
+                    <p>Setup, monitoring, and maintenance of computer systems and networks for optimal performance.</p>
+                    <div class="price">From R150</div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="service-image">
+                    <img src="https://wp-krypton.s3.amazonaws.com/wp-content/uploads/sites/3/2019/01/technology-growth.jpg" alt="Business Services">
+                </div>
+                <div class="service-content">
+                    <h3>Business Services</h3>
+                    <p>Company registration and professional website development to establish your online presence.</p>
+                    <div class="price">From R1200</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about" id="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About CKC Edition</h2>
+                <p>CKC Edition is your trusted partner for comprehensive IT solutions. With years of experience in the technology industry, we provide professional services tailored to meet both personal and business needs.</p>
+                <p>Our mission is to deliver cutting-edge solutions that empower our clients to succeed in the digital world. From software installation to network management, we cover all aspects of IT support.</p>
+                <p>We pride ourselves on our commitment to quality, reliability, and customer satisfaction. When you choose CKC Edition, you're choosing excellence in IT services.</p>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="IT Support Services">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact" id="contact">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>Have questions or ready to get started? Reach out to our team for professional IT solutions. We're here to help you with all your technology needs.</p>
+
+                <div class="contact-details">
+                    <div>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>29 Penelope Street, Bedworth Park, Vereeniging</div>
+                    </div>
+                    <div>
+                        <i class="fas fa-phone"></i>
+                        <div>+27 63 859 6132</div>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <div>ckcedition@gmail.com</div>
+                    </div>
+                    <div>
+                        <i class="fas fa-clock"></i>
+                        <div>Monday - Friday: 8am - 6pm<br>Saturday: 9am - 1pm</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send us a Message</h3>
+                <form id="contactForm" action="store_message.php" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Interested In</label>
+                        <select id="service" name="service">
+                            <option value="">Select a service</option>
+                            <option value="software">Software Installation</option>
+                            <option value="windows">Windows Installation</option>
+                            <option value="office">Microsoft Office Installation</option>
+                            <option value="combo">Windows + Office Combo</option>
+                            <option value="ram">RAM Installation</option>
+                            <option value="diagnostics">PC Diagnostics</option>
+                            <option value="graphic">Graphic Design</option>
+                            <option value="network">Network Management</option>
+                            <option value="business">Business Services</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%; background: var(--primary-dark);">Send Message</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <div class="logo-text">CKC <span>EDITION</span></div>
+                <div class="tagline">SOURCE OF SOLUTIONS</div>
+                <p>Professional IT solutions for personal and business needs. We deliver quality services with a focus on customer satisfaction.</p>
+
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Software Installation</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Windows Installation</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Microsoft Office</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> RAM Installation</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> PC Diagnostics</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-map-marker-alt"></i> Vereeniging, South Africa</a></li>
+                    <li><a href="tel:+27638596132"><i class="fas fa-phone"></i> +27 63 859 6132</a></li>
+                    <li><a href="mailto:ckcedition@gmail.com"><i class="fas fa-envelope"></i> ckcedition@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="copyright">
+            &copy; 2023 CKC Edition (Pty) Ltd. All Rights Reserved. | SOURCE OF SOLUTIONS
+        </div>
+    </div>
+</footer>
+
+//popup
+<div class="popup" id="thankYouPopup">
+    <div class="popup-content">
+        <span class="close-popup">&times;</span>
+        <i class="fas fa-check-circle"></i>
+        <h3>Thank You!</h3>
+        <p>Your message has been sent successfully. We'll get back to you soon.</p>
+        <button class="btn" style="background: var(--primary);" id="closePopupBtn">Continue Browsing</button>
+    </div>
+</div>
+
+<script>
+    // Form submission handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const service = document.getElementById('service').value;
+        const message = document.getElementById('message').value;
+
+        // Create form data object
+        const formData = {
+            name: name,
+            email: email,
+            phone: phone,
+            service: service,
+            message: message
+        };
+
+        // In a real implementation, you would send this data to your server
+        // For this example, we'll just log it and show the popup
+        console.log('Form data:', formData);
+
+        // Show the thank you popup
+        document.getElementById('thankYouPopup').style.display = 'flex';
+
+        // Reset form
+        this.reset();
+    });
+
+    // Close popup functionality
+    document.querySelector('.close-popup').addEventListener('click', function() {
+        document.getElementById('thankYouPopup').style.display = 'none';
+    });
+
+    document.getElementById('closePopupBtn').addEventListener('click', function() {
+        document.getElementById('thankYouPopup').style.display = 'none';
+    });
+
+    // Close popup if clicked outside of content
+    window.addEventListener('click', function(e) {
+        const popup = document.getElementById('thankYouPopup');
+        if (e.target === popup) {
+            popup.style.display = 'none';
+        }
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Sticky header effect
+    window.addEventListener('scroll', function() {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+        } else {
+            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+        }
+    });
+
+    // Service card animations
+    document.querySelectorAll('.service-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-15px)';
+        });
+
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+        });
+    });
+</script>
+</body>
+</html>
